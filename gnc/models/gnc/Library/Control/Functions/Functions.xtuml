@@ -1,0 +1,242 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	"d923df31-2d4f-4454-ba3a-3347665a758b",
+	'Functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("875a0e4e-f520-435b-a5c7-d4903f070f2a",
+	112,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'gnc::Library::Control::Functions');
+INSERT INTO DIM_DIA
+	VALUES ("875a0e4e-f520-435b-a5c7-d4903f070f2a",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("6da296e0-cfc3-41ea-b021-54b367d07943",
+	"00000000-0000-0000-0000-000000000000",
+	'setup',
+	'',
+	'// this function is probably executed first at once
+create object instance ctrl of Controller;
+
+create object instance position of Position;
+position.x = 0;
+position.y = 0;
+position.z = 0;
+relate ctrl to position across R1.''now position'';
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("6da296e0-cfc3-41ea-b021-54b367d07943",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("65229dab-996e-4871-9588-cdd40d3b5520",
+	"00000000-0000-0000-0000-000000000000",
+	'start',
+	'',
+	'// this function define: src/Control.c/Control_start()
+select any ctrl from instances of Controller;
+generate Controller1:''start'' to ctrl;  // // raise start event, drone will takeoff',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("65229dab-996e-4871-9588-cdd40d3b5520",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("bc095d84-fa8c-4cf8-b461-7e87bed1f16a",
+	"00000000-0000-0000-0000-000000000000",
+	'halt',
+	'',
+	'// this function define: src/Control.c/Control_halt()
+select any ctrl from instances of Controller;
+generate Controller3:''halt'' to ctrl;  // raise halt event, drone will land
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("bc095d84-fa8c-4cf8-b461-7e87bed1f16a",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("1c6e066f-8cfd-45d4-a1a4-7edb1b0cfc2e",
+	"00000000-0000-0000-0000-000000000000",
+	'forward',
+	'',
+	'// this function define: src/Control.c/Control_forward()
+select any ctrl from instances of Controller;
+generate Controller4:''forward'' to ctrl;  // // raise start event, drone will move forward',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("1c6e066f-8cfd-45d4-a1a4-7edb1b0cfc2e",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("a54efd75-2b0f-4fe7-b99e-2b03b4f0f422",
+	"00000000-0000-0000-0000-000000000000",
+	'backward',
+	'',
+	'// this function define: src/Control.c/Control_backward()
+select any ctrl from instances of Controller;
+generate Controller5:''backward'' to ctrl;  // // raise start event, drone will move backward',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("a54efd75-2b0f-4fe7-b99e-2b03b4f0f422",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("38fa3b60-00bf-4325-ad03-045a7bef68f0",
+	"00000000-0000-0000-0000-000000000000",
+	'left',
+	'',
+	'// this function define: src/Control.c/Control_left()
+select any ctrl from instances of Controller;
+generate Controller6:''left'' to ctrl;  // // raise start event, drone will move left',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("38fa3b60-00bf-4325-ad03-045a7bef68f0",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("73ab9598-8e73-4615-92f5-e1cb51d8482c",
+	"00000000-0000-0000-0000-000000000000",
+	'right',
+	'',
+	'// this function define: src/Control.c/Control_right()
+select any ctrl from instances of Controller;
+generate Controller7:''right'' to ctrl;  // // raise start event, drone will move right',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("73ab9598-8e73-4615-92f5-e1cb51d8482c",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("23c559a4-2a45-4585-a281-92d7321f5bc8",
+	"00000000-0000-0000-0000-000000000000",
+	'grab',
+	'',
+	'// this function define: src/Control.c/Control_forward()
+select any ctrl from instances of Controller;
+generate Controller10:''grab'' to ctrl;  // // raise start event, drone will grab a prize',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("23c559a4-2a45-4585-a281-92d7321f5bc8",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("e1b68caa-8c18-490a-887e-2bc16524139b",
+	"00000000-0000-0000-0000-000000000000",
+	'arm_up',
+	'',
+	'select any ctrl from instances of Controller;
+generate Controller11:''arm_up'' to ctrl;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("e1b68caa-8c18-490a-887e-2bc16524139b",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("96f3cb82-4003-4597-8d6b-72f9c3b6954e",
+	"00000000-0000-0000-0000-000000000000",
+	'stop',
+	'',
+	'select any ctrl from instances of Controller;
+generate Controller12:''stop'' to ctrl;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("96f3cb82-4003-4597-8d6b-72f9c3b6954e",
+	1,
+	"c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("c266a8d5-aa61-43f4-9d01-7e2baedb603e",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"0d80503a-3f90-42a8-a2a9-2f52ccd4308f",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("0d80503a-3f90-42a8-a2a9-2f52ccd4308f",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Control',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Control.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("d923df31-2d4f-4454-ba3a-3347665a758b",
+	'gnc',
+	1,
+	'../../../gnc.xtuml');
